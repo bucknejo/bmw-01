@@ -1,0 +1,271 @@
+<style type="text/css">
+    #index-content {margin-bottom:15px;padding:10px;width:918px;border:1px solid #ccc;-moz-box-shadow: 0 0 5px #ddd;-webkit-box-shadow: 0 0 5px#ddd;box-shadow: 0 0 5px #ddd;}
+    #index-image-1 {}
+    #index-image-2 {margin-left:525px;}
+    
+    #form-container {position:relative;width:100%;height:300px;}
+    #form-container table {position:absolute;top:5px;left:0px;}
+    
+    #page-message {padding:20px;font-size:12px;font-weight:bold;}
+    
+    a#sheraton-parsippany {color:#336699;font-weight:bold;text-decoration:none;}
+    a#sheraton-parsippany:link {color:#336699;font-weight:bold;}
+    a#sheraton-parsippany:hover {color:#333333;font-weight:bold;}
+    
+    #accommodations-list {list-style-type:square;padding:0px 25px 0px 25px;}
+    #accommodations-list li {font-weight:bold;}
+    
+</style>
+
+<script type="text/javascript">
+    
+;(function($){
+ 
+    $(document).ready(function(){
+        
+        $("#sheraton-parsippany").click(function(event){
+            event.preventDefault();
+            var url = "http://www.starwoodhotels.com/sheraton/property/overview/index.html?propertyID=865";
+            window.open(url, "Hotel");            
+            return false;
+        });
+        
+        $("#page-message").dialog({
+            autoOpen: false,
+            height: 200,
+            width: 400,
+            buttons: {'OK': function(){$(this).dialog("close");}}
+        });
+        
+        var users = <?php echo json_encode($this->users);?>;
+        
+        if (users.length > 0) {
+            
+            $("#full-name").text(users[0].first_name + " " + users[0].last_name);
+            $("#title").text(users[0].title);
+            //$("#check-in-date").val($.datepicker.parseDate('mm-dd-yy', '2012-09-24'));
+            $("#check-in-date").val(Date.parse(users[0].check_in_date).toString('MM-dd-yyyy'));  
+            $("#check-out-date").val(Date.parse(users[0].check_out_date).toString('MM-dd-yyyy'));  
+            
+            if (users[0].early_check_in == 'Yes') {
+                $("#early-check-in").prop('checked', true);                
+            } else {
+                $("#early-check-in").prop('checked', false);                                
+            }
+            
+            if (users[0].late_check_out == 'Yes') {
+                $("#late-check-out").prop('checked', true);                
+            } else {
+                $("#late-check-out").prop('checked', false);
+            }
+            
+            $("#transportation").val(users[0].transportation).prop('selected',true);
+            
+            $("#arrival_flight_info").val(users[0].arrival_flight_info);
+            $("#arrival_flight_time").val(users[0].arrival_flight_time);
+            $("#departure_flight_info").val(users[0].departure_flight_info);
+            $("#departure_flight_time").val(users[0].departure_flight_time);
+        }
+        
+        $("#check-in-date").datepicker({
+            dateFormat: "mm-dd-yy",
+            defaultDate: $(this).val(),
+            //maxDate: "09-24-2012",
+            onSelect: function(dateText, inst) {
+                var x = Date.parse("2012-09-24");
+                var d = Date.parse(dateText);
+                
+                if (d < x) {
+                    var z = 'You have selected a check in date earlier than the program start date.  You will be responsible for the additional cost.';
+                    $("#page-message").html(z);
+                    $("#page-message").dialog("open");
+                }
+            }
+        });
+        
+        $("#check-out-date").datepicker({
+            dateFormat: "mm-dd-yy",
+            defaultDate: $(this).val(),
+            //minDate: "09-28-2012",
+            onSelect: function(dateText, inst) {
+                var x = Date.parse("2012-09-28");
+                var d = Date.parse(dateText);
+                
+                if (d > x) {
+                    var z = 'You have selected a check out date later than the program end date.  You will be responsible for the additional cost.';
+                    $("#page-message").html(z);
+                    $("#page-message").dialog("open");
+                }
+            }
+        });
+        
+        $("#submit-accommodations").button().click(function(){
+            $("#form-accommodations").submit();
+        });
+        
+        $("#form-accommodations").validate({
+            rules: {
+                checkInDate: {
+                    required:true,
+                    dateISO:false
+                },
+                checkOutDate: {
+                    required:true,
+                    dateISO:false
+                }
+            },
+            messages: {
+                checkInDate: {
+                    required: "Check-in date required.",
+                    dateISO: "Enter: mm-dd-yyyy"
+                },
+                checkOutDate: {
+                    required: "Check-out date required.",
+                    dateISO: "Enter: mm-dd-yyyy"                    
+                }
+            }
+            
+        });
+        
+        var pos = 2;
+        var a = $("#side-list").find("a");
+        a.each(function(i){            
+            if (i <= pos) {
+                $(this).css({"color":"#333333", "font-weight":"normal"});        
+            }
+            if (i == pos) {
+                $(this).css({"color":"#336699", "font-weight":"bold"});        
+            }
+            if (i > pos) {
+                $(this).css({"color":"#333333", "font-weight":"normal"});        
+            }
+        });
+
+        $("#arrival_flight_time").timepicker({
+            showPeriod: true,
+            showLeadingZero: true
+        });
+        $("#departure_flight_time").timepicker({
+            showPeriod: true,
+            showLeadingZero: true            
+        });
+        
+    });
+   
+})(jQuery);
+
+</script>
+
+<div id="index-content">
+    
+    <img src="/images/bmw-image-02-crop-01.jpg" alt="" id="index-image-1"/>
+
+    <h3>Hotel Accommodations</h3>
+
+    <p>
+        Just 45 minutes from Newark Airport and just about an hour from LaGuardia and JFK, the <a href="#" id="sheraton-parsippany">Sheraton Parsippany Hotel</a> located at 199 Smith Road, Parsippany NJ 07054, is an ideal choice for business travelers.  The hotel is convenient to several highways, including Interstates 80, 280, 287 and others.  Their warm, friendly staff will make you feel right at home in any of their 370 renovated guest rooms.  
+    </p>
+
+    <p>
+        BMW NA has negotiated a nightly rate of $179 per night, which includes:
+    </p>
+
+    <ul id="accommodations-list">
+        <li>Accommodations in a standard guest room</li>
+        <li>Complimentary overnight parking for each night's stay</li>
+        <li>Complimentary guest room Internet</li>
+    </ul>
+
+    <p>To hold a room at the hotel, please complete the form below.</p>
+
+    <div id="form-container">
+
+        <form action="/accommodations" method="post" id="form-accommodations">
+            <table border="0">
+                <tr>
+                    <td><span class="site-label-1">Name:</span></td>
+                    <td><span class="site-label-2" id="full-name"></span></td>
+                </tr>
+                <tr>
+                    <td><span class="site-label-1">Title:</span></td>
+                    <td><span class="site-label-2" id="title"></span></td>
+                </tr>
+
+                <!-- arrival flight info (new 2012-08-28) -->
+                <tr>
+                    <td><span class="site-label-1">Arrival Flight Info:</span></td>
+                    <td><input type="text" class="site-text-2" name="arrival_flight_info" id="arrival_flight_info" value="" /></td>
+                </tr>
+                <tr>
+                    <td><span class="site-label-1">Arrival Flight Time:</span></td>
+                    <td><input type="text" class="site-text-2" name="arrival_flight_time" id="arrival_flight_time" value="" /></td>
+                </tr>
+                <!-- end -->
+                
+                <tr>
+                    <td><span class="site-label-1">Check-in Date:</span></td>
+                    <td><input type="text" class="site-text-2 required" name="checkInDate" id="check-in-date" value="" readonly="true" /></td>
+                </tr>
+                <tr>
+                    <td><span class="site-label-1">Check-out Date:</span></td>
+                    <td><input type="text" class="site-text-2 required" name="checkOutDate" id="check-out-date" value="" readonly="true" /></td>
+                </tr>
+                
+                <!-- departure flight info (new 2012-08-28) -->
+                <tr>
+                    <td><span class="site-label-1">Departure Flight Info:</span></td>
+                    <td><input type="text" class="site-text-2" name="departure_flight_info" id="departure_flight_info" value="" /></td>
+                </tr>
+                <tr>
+                    <td><span class="site-label-1">Departure Flight Time:</span></td>
+                    <td><input type="text" class="site-text-2" name="departure_flight_time" id="departure_flight_time" value="" /></td>
+                </tr>
+                <!-- end -->
+                
+                
+                <tr>
+                    <td colspan="2">
+                        <span class="site-label-1">Please advise below if you would like us to request: </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="site-label-1">Early Check-in?</span>
+                        <input type="checkbox" class="site-checkbox-1" name="earlyCheckIn" id="early-check-in" />
+                    </td>
+                    <td>
+                        <span class="site-label-1">Late Check-out?</span>
+                        <input type="checkbox" class="site-checkbox-1" name="lateCheckOut" id="late-check-out" />
+                    </td>
+                </tr>
+                <!--
+                <tr>
+                    <td>
+                        <span class="site-label-1">Transportation option: </span>
+                    </td>                    
+                    <td>
+                        <select class="site-select-1" name="transportation" id="transportation">
+                            <?php if($this->transOpts):?>
+                            <?php foreach($this->transOpts as $transport):?>
+                            <option value="<?php echo $transport;?>"><?php echo $transport;?></option>
+                            <?php endforeach;?>
+                            <?php endif;?>
+                        </select>
+                    </td>
+                </tr>
+                -->
+                <tr>
+                    <td>&nbsp;</td>
+                    <td align="left"><br><button class="" name="" id="submit-accommodations">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+    
+</div>
+
+
+<div id="page-message" title="BMW">
+    
+</div>

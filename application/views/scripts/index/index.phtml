@@ -1,0 +1,99 @@
+<style type="text/css">
+    #index-content {margin-bottom:15px;padding:10px;width:918px;border:1px solid #ccc;-moz-box-shadow: 0 0 5px #ddd;-webkit-box-shadow: 0 0 5px#ddd;box-shadow: 0 0 5px #ddd;}
+    #index-image-1 {}
+    #index-image-2 {margin-left:525px;}
+</style>
+
+
+<script type="text/javascript">
+    
+;(function($){
+ 
+    $(document).ready(function(){
+        
+        $("#submit-logon").button().click(function() {
+            $("#form-logon").submit();
+        });
+        
+        
+        var pos = 0;
+        var a = $("#side-list").find("a");
+        a.each(function(i){            
+            if (i <= pos) {
+                $(this).css({"color":"#333333", "font-weight":"normal"});        
+            }
+            if (i == pos) {
+                $(this).css({"color":"#336699", "font-weight":"bold"});        
+            }
+            if (i > pos) {
+                $(this).css({"color":"#333333", "font-weight":"normal"});        
+            }
+        });
+        
+        $("#form-logon").validate();
+        
+    });
+   
+})(jQuery);
+    
+</script>
+
+<div id="index-content">
+
+    <img src="/images/bmw-image-01-crop-01.jpg" alt="" id="index-image-1"/>
+
+    <h3>Home</h3>
+
+    <p>
+        Please join us in Parsippany, NJ from September 25 - 27<sup>th</sup> for a Field Force Boot Camp. These three days are dedicated to communicating our 2013 Sales and Aftersales targets and management priorities while providing you with workshops in preparation for Future Retail 2016 implementation.
+    </p>
+
+    <p>
+        Each session is designed to ensure you are well prepared to support our dealers in their short and long term business planning.  Various areas will share the tools and support to drive our common targets and more importantly, you'll learn when to apply the right tools to the right dealers.
+    </p>
+
+    <p>
+        Please complete the hotel registration process by <b>Friday, September 7th, 2012</b>.  We are unable to confirm sleeping rooms requested received after this date.
+    </p>
+
+    <h4>Changes</h4>
+
+    <p>
+        If you need to make a change in hotel reservations, please email Lynda Bell directly with your new check-in and/or out date.
+    </p>
+
+    <h4>Hotel Registration</h4>
+
+    <p>
+        To begin the hotel registration process, please enter your email address and QT number.
+    </p>
+
+    <form action="/" method="post" id="form-logon">
+    <table width="50%" align="" border="0">
+        <tr>
+            <td colspan="3" align="center"><span class="site-label-3"><?php echo $this->message;?></span></td>
+        </tr>
+        <tr>
+            <td><span class="site-label-1">Email address:</span></td>
+            <td><input type="text" class="site-text-1 required" name="email" id="email" value="" /></td>
+            <td>&nbsp;</td>                                
+        </tr>
+        <tr>
+            <td><span class="site-label-1">QT:</span></td>
+            <td><input type="password" class="site-text-1 required" name="q_number" id="q_number" value="" /></td>
+            <td>
+                <span class="site-label-2">(e.g. QT12345)
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td align="left"><button class="" name="" id="submit-logon">Submit</button></td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+    </form>
+    
+    
+</div>
+

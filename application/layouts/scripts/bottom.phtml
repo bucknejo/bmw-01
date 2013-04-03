@@ -1,0 +1,55 @@
+
+<style type="text/css">
+    #bottom-container {height:50px;border:1px solid #ccc;-moz-box-shadow: 0 0 5px #ddd;-webkit-box-shadow: 0 0 5px#ddd;box-shadow: 0 0 5px #ddd;}
+    #bottom-left {float:left;padding:15px;}
+    #bottom-right {float:right;color:#ccc;padding:15px;}
+    
+    a.bottom-link {text-decoration:none;color:#333333;padding-left:5px;font-size:11px;}
+    a.bottom-link:link {color:#333333;}
+    a.bottom-link:hover {color:#336699;}
+    
+    a.bottom-link-gray {text-decoration:none;color:#ccc;}
+    a.bottom-link-gray:link {}
+    a.bottom-link-gray:hover {color:#333333;}
+</style>
+
+<script type="text/javascript">
+    
+;(function($){
+ 
+    $(document).ready(function(){
+        
+        $("#bmw-na-home").click(function(event){
+            event.preventDefault();
+            var url = $(this).prop('href');
+            window.open(url, "BMW");            
+            return false;
+        });
+        
+    });
+   
+})(jQuery);
+    
+</script>
+
+<div id="bottom-container">
+    
+    <span id="bottom-left">
+        <!--
+        <a href="/" class="bottom-link">Home</a>
+        -->
+        <a href="/agenda" class="bottom-link">Agenda</a>
+        
+        
+        |<a href="/transportation" class="bottom-link">Transportation</a>
+        |<a href="/accommodations" class="bottom-link">Hotel Accommodations</a>
+        |<a href="mailto:Angela.Bien@bmwna.com" class="bottom-link">Contact</a>
+        
+        <?php if ($role_id == 1): ?> 
+            |<a href="/admin" class="bottom-link">Admin</a>            
+        <?php endif;?>
+        
+    </span>
+    <span id="bottom-right"><a href="http://www.bmwusa.com" class="bottom-link-gray" id="bmw-na-home">&copy; 2012 BMW of North America, LLC.</a></span>
+    
+</div>

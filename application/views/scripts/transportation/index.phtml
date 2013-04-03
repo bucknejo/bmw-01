@@ -1,0 +1,80 @@
+<style type="text/css">
+    
+    #index-content {margin-bottom:15px;padding:10px;width:918px;border:1px solid #ccc;-moz-box-shadow: 0 0 5px #ddd;-webkit-box-shadow: 0 0 5px#ddd;box-shadow: 0 0 5px #ddd;}
+    #index-image-1 {}
+    #index-image-2 {margin-left:525px;}
+    
+    #accommodations {padding-left:10px;font-size:12px;color:#336699;font-weight:normal;text-decoration:none;padding-left:10px;}
+    a#accommodations:link {color:#336699;}
+    a#accommodations:hover {color:#333333;}
+    
+        
+</style>
+
+<script type="text/javascript">
+    
+;(function($){
+ 
+    $(document).ready(function(){
+                
+        var pos = 1;
+        var a = $("#side-list").find("a");
+        a.each(function(i){            
+            if (i <= pos) {
+                $(this).css({"color":"#333333", "font-weight":"normal"});        
+            }
+            if (i == pos) {
+                $(this).css({"color":"#336699", "font-weight":"bold"});        
+            }
+            if (i > pos) {
+                $(this).css({"color":"#333333", "font-weight":"normal"});        
+            }
+        });        
+                
+    });
+   
+})(jQuery);
+
+</script>
+
+<div id="index-content">
+    
+    <img src="/images/bmw-image-04-crop-01.jpg" alt="" id="index-image-1"/>
+    
+    <h3>Transportation <a href="/accommodations" id="accommodations">Hotel Accommodations</a></h3>
+    
+    <p>
+        <b>Arrival day:</b>  We are offering bus transportation <b>from Newark Airport</b> on Monday 9/24.  Shuttles will depart every 30 minutes from Newark to Sheraton Parsippany starting 12:00pm until the last bus departure at 6:00pm.
+    </p>
+    
+    <h4>Airport Arrival Procedure:</h4>
+    
+    <ol>
+        <li>Proceed to baggage claim area.</li>
+        <li>After claiming your baggage, proceed to the Ground Transportation Desk located in each terminal near the baggage claim area.</li>
+        <li>You'll be met by a Destination & Conference Services Representative holding a BMW sign.</li>
+        <li>They will escort you to the awaiting shuttle for the approximate 45 minute transfer to the Sheraton Parsippany.</li>
+    </ol>
+    
+    <p>
+        Can't find the Rep?  Call (520) 631-0107 OR (520) 400-4477
+    </p>
+    
+    <p>
+        <b>Departure day:</b>  Shuttles will depart the Sheraton Parsippany immediately upon conclusion of the program between 4:00pm and 5:00pm for Newark Airport.  This is the only shuttle time arranged for the workshop on Thursday evening.
+    </p>
+    
+    <p>
+        On Friday, there are two shuttles; One departing at 6:00am and another departing at 9:00am for Newark Airport.
+    </p>
+    
+    <h4>Shuttle Departure Procedures:</h4>
+    
+    <ol>
+        <li>Meet at the Front Drive of the Sheraton Parsippany at least 15 minutes prior to departure time.</li>
+        <li>A Destination & Conference Service Representative will be there to assist you.</li>
+        <li>Make sure all your luggage is loaded onto the vehicle.</li>
+        <li>Board the shuttle for the 45 minute transfer to Newark Airport.</li>
+    </ol>
+
+</div>

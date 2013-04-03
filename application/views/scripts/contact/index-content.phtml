@@ -1,0 +1,50 @@
+<style type="text/css">
+    a.contact-link {color:#336699;font-size:14px;font-weight:normal;text-decoration:none;}
+    a.contact-link:hover {color:#333333;font-size:14px;font-weight:bold;}
+    a.contact-link:visited {color:#336699;font-size:14px;font-weight:normal;}
+    
+</style>
+
+<script type="text/javascript">
+    
+;(function($){
+ 
+    $(document).ready(function(){
+                
+        var pos = 3;
+        var a = $("#side-list").find("a");
+        a.each(function(i){            
+            if (i <= pos) {
+                $(this).css({"color":"#333333", "font-weight":"normal"});        
+            }
+            if (i == pos) {
+                $(this).css({"color":"#336699", "font-weight":"bold"});        
+            }
+            if (i > pos) {
+                $(this).css({"color":"#333333", "font-weight":"normal"});        
+            }
+        });        
+        
+    });
+   
+})(jQuery);
+
+</script>
+
+<img src="/images/bmw-image-05-crop.jpg" alt="" id="index-image-1"/>
+
+<h3>Contact</h3>
+
+<p>
+    Integer dolor tellus, condimentum at facilisis et, accumsan eu nisi. Aliquam vel orci sapien. Pellentesque semper, eros et accumsan laoreet, erat mauris laoreet nulla, et posuere erat diam et lacus. Donec purus magna, pharetra eu scelerisque nec, volutpat ut elit. Nullam fermentum, enim sed mollis viverra, purus lectus aliquam orci, ut luctus mauris lorem a justo. Ut vehicula aliquet vulputate. Morbi velit tortor, cursus at feugiat et, eleifend in elit. Aenean a sodales purus. Donec augue felis, mollis id elementum ac, aliquam eget massa. Vestibulum blandit interdum sapien, quis aliquet sapien fermentum vel.
+</p>
+
+<p>
+    <b>Questions?</b>  Click below to email us with any questions you have about the program.
+</p>
+
+<p>
+    <a href="mailto:Angela.Bien@bmwna.com" class="contact-link">Email Us!</a>    
+</p>
+
+<img src="/images/usa-proud-partner.jpg" alt="" id="index-image-2" />

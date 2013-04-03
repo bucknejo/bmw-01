@@ -1,0 +1,129 @@
+<style type="text/css">
+    #index-content {margin-bottom:15px;padding:10px;width:918px;border:1px solid #ccc;-moz-box-shadow: 0 0 5px #ddd;-webkit-box-shadow: 0 0 5px#ddd;box-shadow: 0 0 5px #ddd;}
+    #index-image-1 {}
+    #index-image-2 {margin-left:525px;}
+    
+    #sample-agenda {font-size:12px;color:#336699;font-weight:normal;text-decoration:none;padding-left:10px;}
+    a#sample-agenda:link {color:#336699;}
+    a#sample-agenda:hover {color:#333333;}
+    
+    #transportation {padding-left:10px;font-size:12px;color:#336699;font-weight:normal;text-decoration:none;padding-left:10px;}
+    a#transportation:link {color:#336699;}
+    a#transportation:hover {color:#333333;}
+    
+    #accommodations {padding-left:10px;font-size:12px;color:#336699;font-weight:normal;text-decoration:none;padding-left:10px;}
+    a#accommodations:link {color:#336699;}
+    a#accommodations:hover {color:#333333;}
+    
+    #sample-agenda-content {display:none;padding:15px;}
+    
+</style>
+
+<script type="text/javascript">
+    
+;(function($){
+ 
+    $(document).ready(function(){
+                
+        var pos = 1;
+        var a = $("#side-list").find("a");
+        a.each(function(i){            
+            if (i <= pos) {
+                $(this).css({"color":"#333333", "font-weight":"normal"});        
+            }
+            if (i == pos) {
+                $(this).css({"color":"#336699", "font-weight":"bold"});        
+            }
+            if (i > pos) {
+                $(this).css({"color":"#333333", "font-weight":"normal"});        
+            }
+        });        
+        
+        $("#sample-agenda").click(function(event) {
+            event.preventDefault();
+            $("#sample-agenda-content").dialog("open");
+            window.open($(this).prop('href'), "Sample");
+            return false;
+        });
+//        
+//        $("#sample-agenda-content").dialog({
+//            autoOpen:false,
+//            height: 500,
+//            width: 600
+//        });
+        
+    });
+   
+})(jQuery);
+
+</script>
+
+<div id="index-content">
+    
+    <img src="/images/bmw-image-03-crop-01.jpg" alt="" id="index-image-1"/>
+
+    <!--
+    <h3>Agenda <a href="#" id="sample-agenda">Sample</a></h3>
+    <a href="/images/participant-agenda.pdf" id="sample-agenda">Sample</a>    
+    -->
+    <h3>Agenda <a href="/transportation" id="transportation">Transportation</a><a href="/accommodations" id="accommodations">Hotel Accommodations</a></h3>
+
+    <p>
+        The program will officially kick off on <b>Monday evening</b> with a casual <b>welcome reception at 6:30pm</b>.  
+    </p>
+
+    <p>
+        <b>Tuesday</b>, starts in the morning with a <b>welcome and 2013 priorities</b> presentation by <b>Peter Miles and Craig Westbrook</b>.  You will then rotate in small groups through a total of 6 workshop topics consisting of:        
+    </p>
+
+    <ol>
+        <li>Customer Pay Priorities with Peter Brandt and Florian Kuenstner</li>
+        <li>Understanding the Process Health Check data and report with MSXi</li>
+        <li>Understanding the Facilities Health Check data and report with Resource Automotive</li>
+        <li>Service Quality Priorities with Michael Kiehne, Salim Murr and Richard Hart</li>
+        <li>Customer Orientation Priorities with Charlie Silva</li>
+    </ol>
+
+    <p>
+        During the day, you'll also hear from Peter and Craig about the summarized results of the focus group and their recommended next steps with time for the audience to share your thoughts. The evening ends with a casual dinner onsite at the hotel.
+    </p>
+
+    <p>
+        On <b>Wednesday</b>, you'll continue through workshops rotations wit topics consisting of:
+    </p>
+
+    <ol>
+        <li>FMS and Dealer Agreement with Ben Figueroa and Kevin Healy</li>
+        <li>Parts Goals with Anja Kuechler and Florian Kuenstner</li>
+        <li>Sales Goals and Model Forecast with Anthony Ascione and Patty Halpin</li>
+        <li>CPO Goals with Steve Saward</li>
+        <li>Prioritizing Opportunities and Solution Identification workshop with Paul Bates and John Banovic</li>
+    </ol>
+
+    <p>
+        The evening will end with a casual dinner onsite at the hotel.
+    </p>
+
+    <p>
+        <b>Thursday</b> immediately begins with workshop rotations consisting of:
+    </p>
+
+    <ol>
+        <li>Consult and Action Plan Workshop by Paul Bates and John Banovic</li>
+        <li>Aftersales Town Hall with Craig Westbrook and direct reports</li>
+        <li>Operations Town Hall with Peter Miles and direct reports</li>
+        <li>2013 Marketing and Product Plan with Trudy Hardy and Paul Ferriolo</li>
+        <li>Audit Town Hall with Bob Baranowski</li>
+    </ol>
+
+    <p>
+        The <b>program concludes between 4pm to 5pm with closing remarks by Ludwig Willisch</b>.  Please do not book flights earlier than 7pm. 
+    </p>
+    
+    
+</div>
+
+<div id="sample-agenda-content" title="BMW Sample Agenda">
+    <img src="/images/participant-agenda.jpg" alt="" id=""/>    
+</div>
+

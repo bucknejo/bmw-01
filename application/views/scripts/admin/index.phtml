@@ -1,0 +1,201 @@
+<style type="text/css">
+    #index-content {margin-bottom:15px;padding:10px;width:918px;border:1px solid #ccc;-moz-box-shadow: 0 0 5px #ddd;-webkit-box-shadow: 0 0 5px#ddd;box-shadow: 0 0 5px #ddd;}
+    #index-image-1 {}
+    #index-image-2 {margin-left:525px;}
+</style>
+
+<script type="text/javascript">
+    
+;(function($){
+ 
+    $(document).ready(function(){
+        
+        var users = [];
+        
+        $("#detail").dialog({
+            autoOpen: false,
+            modal: true,
+            height: 450,
+            width: 450,
+            show: "slide",
+            hide: "clip"
+        });
+        
+        var grid = $("#list");
+        grid.jqGrid({
+            url: '/admin/read/format/html',
+            datatype: "xml",
+            colNames:['Index',
+                    'id',
+                    'Date Created',
+                    'Last Updated',
+                    'User',
+                    'Active',
+                    'user_id',
+                    'Password',
+                    'Role Id',
+                    'First Name',
+                    'Last Name',
+                    'Email',
+                    'Q Number',
+                    'Emp No',
+                    'Title',
+                    'Check-in Date',
+                    'Check-out Date',
+                    'Early Check-in',
+                    'Late Check-out',
+                    'Transportation',
+                    'Arrival Flight Info',
+                    'Arrival Flight Time',
+                    'Departure Flight Info',
+                    'Departure Flight Time',
+                    'Registered'
+                ],
+            colModel:[
+                {name:'1',index:'1', hidden: true},
+                {name:'id',index:'id', hidden: true},
+                {name:'date_created',index:'date_created', align: 'center', hidden: true},
+                {name:'last_updated',index:'last_updated', align: 'center', hidden: true},
+                {name:'user',index:'user', hidden: true},
+                {name:'active',index:'active', width: '45px', align: 'center', hidden: true},
+                {name:'user_id',index:'user_id', hidden: true},
+                {name:'password',index:'password', hidden: true},
+                {name:'role_id',index:'role_id', hidden: true},
+                {name:'first_name',index:'first_name', align: 'center', width:'100px'},
+                {name:'last_name',index:'last_name', align: 'center', width:'100px'},
+                {name:'email',index:'email', hidden: true},
+                {name:'q_number',index:'q_number', align: 'center', width:'100px'},
+                {name:'emp_no',index:'emp_no', hidden: true},
+                {name:'title',index:'title', hidden: true},
+                {name:'check_in_date',index:'check_in_date', align: 'center', width:'100px'},
+                {name:'check_out_date',index:'check_out_date', align: 'center', width:'100px'},
+                {name:'early_check_in',index:'check_in_date', align: 'center', width:'100px'},
+                {name:'late_check_out',index:'late_check_out', align: 'center', width:'100px'},
+                {name:'transportation',index:'transportation', align: 'center', width:'100px'},
+                {name:'arrival_flight_info',index:'arrival_flight_info', align: 'center', width:'100px'},
+                {name:'arrival_flight_time',index:'arrival_flight_time', align: 'center', width:'100px'},
+                {name:'departure_flight_info',index:'departure_flight_info', align: 'center', width:'100px'},
+                {name:'departure_flight_time',index:'departure_flight_time', align: 'center', width:'100px'},
+                {name: 'registered',index:'registered', align: 'center', width:'100px'},
+            ],
+            pager:'#pager',
+            rowNum: 25,
+            rowList: [5, 10, 25, 50, 100, 500],
+            sortname: '1',
+            sortorder: 'asc',
+            viewrecords: true,
+            height: 350,
+            width: 680,
+            //multiselect: true,
+            autowidth: true,
+            caption: "Users",
+            loadError: function(xhr, status, error) {
+                    $("#detail-inner").html(status + "<br>" + error);
+                    $("#detail").dialog("open");
+                    return false;
+            },
+            ondblClickRow: function(id) {
+                var ret = $("#list").jqGrid('getRowData', id);
+                //$("#detail-inner").html("Test: " + id);
+                $("#detail-inner").html(showDetail(id));
+                $("#detail").dialog("open");
+            }
+        });
+        
+        function showDetail(id) {
+            
+            var ret = "";
+            var url = '/admin/detail/id/'+id+'/format/html';
+            
+            $.ajax({
+                url:url,
+                cache:false,
+                async:false,
+                dataType:'html',
+                type:'post',
+                error: function(responseText) {
+                    console.log("Error:" + responseText);                         
+                },
+                success: function(responseText) {
+                    console.log("Success: " + responseText);
+                    ret = responseText;
+                },
+                beforeSend: function() {
+                    $("#loader").show();
+                },
+                complete: function() {
+                    $("#loader").hide();
+                }                
+            });
+            
+            return ret;
+                                                
+        }
+
+        $("#list").jqGrid(
+            'navGrid',
+            '#pager',
+            {del:false,add:false,edit:false,search:true,view:false},
+            {}, // parms for edit
+            {}, // parms for add
+            {}, // parms for delete
+            {closeAfterSearch:true,Find:'Find...',multipleSearch:true, top: 300, left: 400},
+            {} // parms for view
+        );
+
+        $("#list").jqGrid(
+            'navGrid',
+            '#pager'
+        ).jqGrid('navButtonAdd', '#pager',
+            {
+                caption: "",
+                buttonicon: "ui-icon-arrowstop-1-s",
+                onClickButton: function() {
+                    location.replace('<?php echo $this->excel; ?>');
+                },
+                position: "last",
+                title: "Excel Download",
+                cursor: "pointer"
+            }
+        ).jqGrid('navButtonAdd', '#pager',
+            {
+                caption: "",
+                buttonicon: "ui-icon-plus",
+                onClickButton: function() {
+                    //location.replace('/admin/create');
+                },
+                position: "first",
+                title: "Add Project",
+                cursor: "pointer"
+            }
+        ).jqGrid('navButtonAdd', '#pager',
+            {
+                caption: "",
+                buttonicon: "ui-icon-home",
+                onClickButton: function() {
+                    location.replace('/')
+                },
+                position: "last",
+                title: "Home",
+                cursor: "pointer"
+            }
+        );
+
+        
+        
+    });
+   
+})(jQuery);
+
+</script>
+
+<div id="index-content">
+
+    <table id="list"></table>
+    <div id="pager"></div>
+    
+</div>
+
+<div id="detail" title="User Detail">
+    <div id="detail-inner"></div>
+</div>

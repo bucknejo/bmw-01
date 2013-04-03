@@ -1,0 +1,76 @@
+<script type="text/javascript">
+    
+;(function($){
+ 
+    $(document).ready(function(){
+        
+        $("#submit-logon").button().click(function() {
+            $("#form-logon").submit();
+        });
+        
+        
+        var pos = 0;
+        var a = $("#side-list").find("a");
+        a.each(function(i){            
+            if (i <= pos) {
+                $(this).css({"color":"#333333", "font-weight":"normal"});        
+            }
+            if (i == pos) {
+                $(this).css({"color":"#336699", "font-weight":"bold"});        
+            }
+            if (i > pos) {
+                $(this).css({"color":"#333333", "font-weight":"normal"});        
+            }
+        });
+        
+        $("#form-logon").validate();
+        
+    });
+   
+})(jQuery);
+    
+</script>
+
+<img src="/images/bmw-image-02-crop.jpg" alt="" id="index-image-1"/>
+
+<div id="index-title"><h2>Logon</h2></div>
+<p>
+    Aenean feugiat posuere metus, quis blandit purus mollis nec. Quisque eget purus mi. Cras magna mi, pharetra at rhoncus vitae, luctus sit amet tellus. Maecenas sem arcu, pellentesque in commodo ac, ultricies eu erat. Integer augue metus, ornare sed cursus id, imperdiet ut turpis. Nulla imperdiet mattis tempus. Phasellus a turpis leo, in tristique risus. Nam dapibus posuere lobortis. Praesent vitae massa id mi volutpat consectetur a quis nisi. Proin tempor erat vitae enim convallis pellentesque. Etiam tristique interdum luctus.
+</p>
+
+<p>
+    Please complete the online registration process by <b>Friday, August 31st, 2012.</b>
+</p>
+
+<p>
+    <b>Register</b>
+    <br>To begin the registration process, please enter your user ID and password:
+</p>
+
+<form action="" method="post" id="form-logon">
+<table width="65%" align="center" border="0">
+    <tr>
+        <td><span class="site-label-1">User ID:</span></td>
+        <td><input type="text" class="site-text-1 required" name="user_id" id="user_id" value="" /></td>
+        <td>&nbsp;</td>                                
+    </tr>
+    <tr>
+        <td><span class="site-label-1">Password:</span></td>
+        <td><input type="password" class="site-text-1 required" name="password" id="password" value="" /></td>
+        <td>
+            &nbsp;
+            <!--
+            <span class="site-label-2">(ex. QT12345)
+            </span>
+            -->
+        </td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td align="left"><button class="" name="" id="submit-logon">Submit</button></td>
+        <td>&nbsp;</td>
+    </tr>
+</table>
+</form>
+
+<img src="/images/usa-proud-partner.jpg" alt="" id="index-image-2" />

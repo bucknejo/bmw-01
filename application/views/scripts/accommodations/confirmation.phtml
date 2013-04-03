@@ -1,0 +1,119 @@
+<style type="text/css">
+    
+    #index-content {margin-bottom:15px;padding:10px;width:918px;border:1px solid #ccc;-moz-box-shadow: 0 0 5px #ddd;-webkit-box-shadow: 0 0 5px#ddd;box-shadow: 0 0 5px #ddd;}
+    #index-image-1 {}
+    
+    #guest-information {display:none;}
+    
+    #print {margin-left: 20px;}
+    
+
+</style>
+
+<script type="text/javascript">
+    
+;(function($){
+ 
+    $(document).ready(function(){
+        
+        var user = <?php echo json_encode($this->users);?>;
+        
+        if (user.length > 0) {
+            $("#first_name").text(user[0].first_name);
+            $("#last_name").text(user[0].last_name);
+            $("#email").text(user[0].email);
+            $("#check_in_date").text(user[0].check_in_date);
+            $("#check_out_date").text(user[0].check_out_date);
+            $("#early_check_in").text(user[0].early_check_in);
+            $("#late_check_out").text(user[0].late_check_out);
+            $("#arrival_flight_info").text(user[0].arrival_flight_info);
+            $("#arrival_flight_time").text(user[0].arrival_flight_time);
+            $("#departure_flight_info").text(user[0].departure_flight_info);
+            $("#departure_flight_time").text(user[0].departure_flight_time);
+        }
+        
+        $("#print").button().click(function() {
+            window.print();
+        })
+        
+        
+    });
+   
+})(jQuery);
+
+</script>
+<div id="index-content">
+    
+    <img src="/images/bmw-image-02-crop-01.jpg" alt="" id="index-image-1"/>
+    
+    <h3>Hotel Accommodations Confirmation</h3>
+
+    <p>
+        Congratulations!  You have successfully registered for the event.  Please review the details below.
+    </p>
+    
+    <h4>Participant Information<span id="print">Print</span></h4>
+    
+    <!-- user information -->
+    <table>
+        <tr>
+            <td><span class="site-label-1">First Name:</span></td>
+            <td><span class="site-label-2" id="first_name"></span></td>
+            <td></td>                
+        </tr>
+        <tr>
+            <td><span class="site-label-1">Last Name:</span></td>
+            <td><span class="site-label-2" id="last_name"></span></td>
+            <td></td>                
+        </tr>
+        <tr>
+            <td><span class="site-label-1">Email:</span></td>
+            <td><span class="site-label-2" id="email"></span></td>
+            <td></td>                
+        </tr>
+        <tr>
+            <td><span class="site-label-1">Check-In Date:</span></td>
+            <td><span class="site-label-2" id="check_in_date"></span></td>
+            <td></td>                
+        </tr>
+        <tr>
+            <td><span class="site-label-1">Check-Out Date:</span></td>
+            <td><span class="site-label-2" id="check_out_date"></span></td>
+            <td></td>                
+        </tr>
+        <tr>
+            <td><span class="site-label-1">Early Check-In:</span></td>
+            <td><span class="site-label-2" id="early_check_in"></span></td>
+            <td></td>                
+        </tr>
+        <tr>
+            <td><span class="site-label-1">Late Check-out:</span></td>
+            <td><span class="site-label-2" id="late_check_out"></span></td>
+            <td></td>                
+        </tr>
+        <tr>
+            <td><span class="site-label-1">Arrival Flight Info:</span></td>
+            <td><span class="site-label-2" id="arrival_flight_info"></span></td>
+            <td></td>                
+        </tr>
+        <tr>
+            <td><span class="site-label-1">Arrival Flight Time:</span></td>
+            <td><span class="site-label-2" id="arrival_flight_time"></span></td>
+            <td></td>                
+        </tr>
+        <tr>
+            <td><span class="site-label-1">Departure Flight Info:</span></td>
+            <td><span class="site-label-2" id="departure_flight_info"></span></td>
+            <td></td>                
+        </tr>
+        <tr>
+            <td><span class="site-label-1">Departure Flight Time:</span></td>
+            <td><span class="site-label-2" id="departure_flight_time"></span></td>
+            <td></td>                
+        </tr>
+    </table>
+    
+    
+    
+    
+</div>
